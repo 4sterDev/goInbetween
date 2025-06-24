@@ -16,7 +16,7 @@ func (w *wrappedWriter) WriteHeader(statusCode int) {
 	w.statusCode = statusCode
 }
 
-func Logging(next http.Handler, logger any) http.Handler {
+func Logging(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		wrapped := &wrappedWriter{
 			ResponseWriter: w,
